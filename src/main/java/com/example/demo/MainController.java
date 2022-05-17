@@ -15,6 +15,18 @@ public class MainController {
     public String loginController() {
         return "login";
     }
+    @RequestMapping(value = "/register")
+    public String registerController() {
+        return "register";
+    }
+    @RequestMapping(value = "/rating")
+    public String ratingController() {
+        return "rating";
+    }
+//    @RequestMapping(value = "/error")
+//    public String errorController() {
+//        return "error";
+//    }
 
 //    @GetMapping(value="/user")
 //    public String getloginvalues(Model model) {
