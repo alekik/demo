@@ -69,5 +69,9 @@ public class User {
     @ManyToMany
     private Set<Item> item;
 
+//    @Getter
+//    @Setter
+//    @ManyToMany
+//    private Set<Enemy> enemy;
 
 }

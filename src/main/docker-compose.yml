@@ -3,12 +3,8 @@ version: '2'
 services:
   app:
     image: 'docker-spring-boot-postgres:latest'
-#    image: counter-image
     build:
       context: .
-    ports:
-      - 8080:8080
-
     container_name: app
     depends_on:
       - db
@@ -39,4 +35,3 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
-
