@@ -26,15 +26,15 @@ import java.util.List;
 //@Controller
 public class DemoApplication {
 
-	private final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
-
-	private EnemyRepository enemyRepository;
-
-	private UserRepository userRepository;
-
-	private ItemRepository itemRepository;
-
-	private HeroRepository heroRepository;
+//	private final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
+//
+//	private EnemyRepository enemyRepository;
+//
+//	private UserRepository userRepository;
+//
+//	private ItemRepository itemRepository;
+//
+//	private HeroRepository heroRepository;
 
 
 	public static void main(String[] args) {
@@ -43,64 +43,64 @@ public class DemoApplication {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void runAfterStartup() {
-		queryAllEnemies();
-		createEnemy();
-		queryAllEnemies();
-		deleteEnemy();
-		queryAllEnemies();
-		updateEnemy();
-		queryAllEnemies();
-
-		createUser();
+//		queryAllEnemies();
+//		createEnemy();
+//		queryAllEnemies();
+//		deleteEnemy();
+//		queryAllEnemies();
+//		updateEnemy();
+//		queryAllEnemies();
+//
+//		createUser();
 	}
 
-	private void createEnemy() {
-		Enemy enemy = new Enemy();
-		enemy.setId(2L);
-		enemy.setHp(1);
-		enemy.setIsBoss(1);
-		enemy.setPathToImage("12");
-		enemy.setName("Hor");
-		logger.info("Saving new enemy...");
-		enemyRepository.save(enemy);
-	}
-
-	private void createUser() {
-		User user = new User();
-		user.setId(2L);
-		user.setUsername("Alex");
-		user.setRole("admin");
-		user.setPassword("JOHN");
-		user.setUserLevel(12);
-		user.setGametime(0);
-		user.setScore(0);
-		user.setCurrentEnemy(enemyRepository.getById(1L));
-		user.setItem(new HashSet<>(itemRepository.findAll()));
-		user.setHero(new HashSet<>(heroRepository.findAll()));
-		user.setRating(1);
-		userRepository.save(user);
-	}
-
-	private void deleteEnemy() {
-		Enemy enemy = enemyRepository.getById(2L);
-		enemyRepository.delete(enemy);
-	}
-
-	private void updateEnemy() {
-		Enemy enemy = new Enemy();
-		enemy.setId(1L);
-		enemy.setHp(1);
-		enemy.setIsBoss(1);
-		enemy.setPathToImage("12");
-		enemy.setName("Hor");
-		enemyRepository.saveAndFlush(enemy);
-	}
-
-	private void queryAllEnemies() {
-		List<Enemy> allEnemies = enemyRepository.findAll();
-		for (Enemy enemy: allEnemies) {
-			enemy.printEnemy();
-		}
-		logger.info("Number of enemies: " + allEnemies.size());
-	}
+//	private void createEnemy() {
+//		Enemy enemy = new Enemy();
+//		enemy.setId(2L);
+//		enemy.setHp(1);
+//		enemy.setIsBoss(1);
+//		enemy.setPathToImage("12");
+//		enemy.setName("Hor");
+//		logger.info("Saving new enemy...");
+//		enemyRepository.save(enemy);
+//	}
+//
+//	private void createUser() {
+//		User user = new User();
+//		user.setId(2L);
+//		user.setUsername("Alex");
+//		user.setRole("admin");
+//		user.setPassword("JOHN");
+//		user.setUserLevel(12);
+//		user.setGametime(0);
+//		user.setScore(0);
+//		user.setCurrentEnemy(enemyRepository.getById(1L));
+//		user.setItem(new HashSet<>(itemRepository.findAll()));
+//		user.setHero(new HashSet<>(heroRepository.findAll()));
+//		user.setRating(1);
+//		userRepository.save(user);
+//	}
+//
+//	private void deleteEnemy() {
+//		Enemy enemy = enemyRepository.getById(2L);
+//		enemyRepository.delete(enemy);
+//	}
+//
+//	private void updateEnemy() {
+//		Enemy enemy = new Enemy();
+//		enemy.setId(1L);
+//		enemy.setHp(1);
+//		enemy.setIsBoss(1);
+//		enemy.setPathToImage("12");
+//		enemy.setName("Hor");
+//		enemyRepository.saveAndFlush(enemy);
+//	}
+//
+//	private void queryAllEnemies() {
+//		List<Enemy> allEnemies = enemyRepository.findAll();
+//		for (Enemy enemy: allEnemies) {
+//			enemy.printEnemy();
+//		}
+//		logger.info("Number of enemies: " + allEnemies.size());
+//	}
 }
