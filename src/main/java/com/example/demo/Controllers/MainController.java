@@ -91,6 +91,10 @@ public class MainController {
     public String LoginController(){
         return "login";
     }
+    @GetMapping(value="/admin")
+    public String AdminController(){
+        return "admin";
+    }
     @PostMapping(value = "/login")
     public String PostloginController(@RequestParam String email, @RequestParam String password, Model model) {
         int check = userService.checkuser(email,password);
