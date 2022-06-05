@@ -14,21 +14,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class EnemyServices {
-
+    @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private ItemRepository itemRepository;
 
+    @Autowired
     private HeroRepository heroRepository;
 
-    public static void addEnemy(EnemyRepository repos){
+    @Autowired
+    private EnemyRepository enemyRepository;
+
+    public void addEnemy(){
         Enemy enemy = new Enemy();
-        enemy.setId(1L);
         enemy.setHp(10);
         enemy.setIsBoss(0);
         enemy.setName("123");
         enemy.setPathToImage("123");
-        repos.save(enemy);
+        enemyRepository.save(enemy);
+    }
+
+    public int damageEnemy(){
+
     }
 }

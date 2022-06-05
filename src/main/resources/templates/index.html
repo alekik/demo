@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -19,17 +19,19 @@
 <!--                    <li class="nav-item"><a class="nav-link active" href="#">Магазин</a></li>-->
 <!--                    <li class="nav-item"><a class="nav-link" href="#">Статистика</a></li>-->
                     <li class="nav-item"><a class="nav-link" href="/rating">pейтинг</a></li>
-                </ul><a class="btn btn-primary ms-md-2" role="button" href="/login">Авторизоваться</a>
+                <a class="btn btn-primary ms-md-2" role="button" href="/login">Авторизоваться</a>
+                <p th:text = "${name}" class="mt-3 "name="login"></p></ul>
             </div>
         </div>
     </nav>
     <section class="py-4 py-xl-5">
         <h1 class="text-center">ТУТ ИГРОВЫЕ ОЧКИ</h1>
+        <h1 class="text-center">ТУТ ИГРОВОЙ УРОВЕНЬ</h1>
     </section>
     <div class="text-white bg-primary bg-gradient border rounded border-0 p-4 py-5" style="height: 500px;">
         <div class="row h-100">
             <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
-                <div><button class="btn btn-dark btn-lg text-uppercase fs-5 border rounded-circle border-0 shadow-lg py-2 px-4" type="button" style="height: 200px;width: 200px;">ЖМИ НА МЕНЯ</button></div>
+                <div><form action="#" th:action="@{'/index/' + ${name}}" th:object="${name}" method="post"><button class="btn btn-primary btn-dark btn-lg text-uppercase fs-5 border rounded-circle border-0 shadow-lg py-2 px-4" type="submit" style="height: 200px;width: 200px;">ЖМИ НА МЕНЯ</button></form></div>
             </div>
         </div>
     </div>

@@ -17,6 +17,7 @@ public class User {
     @Getter
     @Setter
     @Id
+    @GeneratedValue
     private Long id;
 
     @Getter
