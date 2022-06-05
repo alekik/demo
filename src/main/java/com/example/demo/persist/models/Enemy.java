@@ -3,10 +3,7 @@ package com.example.demo.persist.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Arkadiy Sotnikov (04.04.2022 2:13)
@@ -15,6 +12,7 @@ import javax.persistence.Table;
 @Table(name = "Enemy")
 public class Enemy {
     @Id
+    @GeneratedValue
     @Getter
     @Setter
     private Long id;
