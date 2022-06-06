@@ -25,13 +25,11 @@ public class MainController {
     private UserRepository userRepository;
     @Autowired
     private UserServices userService;
+    @Autowired
+    private EnemyServices enemyService;
     @GetMapping(value = "/")
     public String StartController() {
         return "index";
-    }
-    @GetMapping(value = "/game")
-    public String GameController(Model model) {
-        return "game";
     }
     @GetMapping(value = "/index")
     public String IndexController(@ModelAttribute String name,Model model) {
@@ -46,7 +44,7 @@ public class MainController {
         return "index";
     }
     @GetMapping(value = "/game/{id}")
-    public String IndexUserController(@PathVariable(value="name") Long id, Model model) {
+    public String IndexUserController(@PathVariable(value="id") long id, Model model) {
 //        Object name = model.getAttribute("name");
 //        if (name!=null){
 //            model.addAttribute("name",name);
@@ -57,13 +55,13 @@ public class MainController {
         User user = userService.getuserbyid(id);
         model.addAttribute("score", user.getScore());
         model.addAttribute("level", user.getUserLevel());
-//        model.addAttribute("enemyname", name);
-//        model.addAttribute("enemyhp", name);
-//        model.addAttribute("name", name);
+        model.addAttribute("enemyname", user.getCurrentEnemy().getName());
+        model.addAttribute("enemyhp", user.getCurrentEnemyHp());
+        model.addAttribute("name", user.getUsername());
         return "game";
     }
-    @PostMapping(value = "/game/{name}")
-    public String PostIndexUserController(@PathVariable(value="name") String name, Model model) {
+    @PostMapping(value = "/game/{id}")
+    public String PostIndexUserController(@PathVariable(value="id") long id, Model model) {
 //        Object name = model.getAttribute("name");
 //        if (name!=null){
 //            model.addAttribute("name",name);
@@ -71,7 +69,14 @@ public class MainController {
 //        else {
 //            model.addAttribute("name", "Guest");
 //        }
-        model.addAttribute("name", name);
+        userService.attack(id);
+        User user = userService.getuserbyid(id);
+        model.addAttribute("score", user.getScore());
+        model.addAttribute("level", user.getUserLevel());
+        model.addAttribute("enemyname", user.getCurrentEnemy().getName());
+        model.addAttribute("enemyhp", user.getCurrentEnemyHp());
+        model.addAttribute("name", user.getUsername());
+        model.addAttribute("id", id);
         return "game";
     }
     @PostMapping(value = "/index")
@@ -97,11 +102,11 @@ public class MainController {
     }
     @PostMapping(value = "/login")
     public String PostloginController(@RequestParam String email, @RequestParam String password, Model model) {
-        int check = userService.checkuser(email,password);
-        if (check==2)return "rating";
-        else if (check==0)return "login";
-        model.addAttribute("name", email);
-        return "redirect:/index";
+        long res = userService.findbyemail(email);
+        int check = userService.checkuser(res,password);
+        if (check==2)return "redirect:/rating";
+        else if (check==0)return "redirect:/login";
+        return "redirect:/game/" + res;
     }
     @GetMapping(value = "/register")
     public String registerController() {
@@ -114,12 +119,12 @@ public class MainController {
 //        System.out.println(password);
 //        UserServices.adduser(email, password);
 //        EnemyServices.addEnemy(enemyRepository);
-        userService.adduser(email,password);
+        long res = userService.adduser(email,password);
 //        logger.info("Saving new enemy...");
 //        enemy.printEnemy();
 //        logger.info("Saving new enemy...");
-        model.addAttribute("name",email);
-        return "redirect:/game/" + email;
+//        model.addAttribute("name",email);
+        return "redirect:/game/" + res;
 
     }
     @RequestMapping(value = "/rating")

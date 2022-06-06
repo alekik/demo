@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 @Service
 public class EnemyServices {
     @Autowired
@@ -38,6 +41,7 @@ public class EnemyServices {
     }
 
     public int damageEnemy(){
-
+        return 0;
     }
+
 }

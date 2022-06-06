@@ -2,6 +2,7 @@ package com.example.demo.persist.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -34,6 +35,10 @@ public class User {
     @Setter
     @OneToOne
     private Enemy currentEnemy;
+
+    @Getter
+    @Setter
+    private int currentEnemyHp;
 
     @Getter
     @Setter

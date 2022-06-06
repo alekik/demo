@@ -26,7 +26,7 @@ public class UserServices {
     @Autowired
     private UserRepository userRepository;
 
-    public void adduser(String login, String password){
+    public long adduser(String login, String password){
         User user = new User();
         user.setUsername(login);
         user.setPassword(password);
@@ -35,22 +35,39 @@ public class UserServices {
         ArrayList<Enemy> res = new ArrayList<>();
         enemylist.ifPresent(res::add);
         user.setCurrentEnemy(res.get(0));
+        user.setCurrentEnemyHp(10);
         user.setGametime(0);
         user.setRating(0);
         user.setRole("user");
         user.setScore(0);
         userRepository.save(user);
+        return user.getId();
     }
 
-    public int checkuser(String email, String password){
+    public long findbyemail(String email){
+        long res=1L;
+        boolean t = false;
         List<User> lst = userRepository.findAll();
-        int res=0;
         for (User user:lst){
-            if (user.getUsername().equals(email) && user.getPassword().equals(password)) {
-                if (user.getRole().equals("admin"))res=2;
-                else res=1;
+            if (user.getUsername().equals(email)) {
+                t = true;
                 break;
             }
+            res+=1L;
+        }
+        if (t) return res;
+        return 0L;
+    }
+
+    public int checkuser(long id, String password){
+        int res=0;
+        if (id==0L) return 0;
+        Optional<User> userlist = userRepository.findById(id);
+        ArrayList<User> reslst = new ArrayList<>();
+        userlist.ifPresent(reslst::add);
+        if (reslst.get(0).getPassword().equals(password)){
+            if (reslst.get(0).getRole().equals("admin"))res=2;
+            else res=1;
         }
         return res;
     }
@@ -60,5 +77,13 @@ public class UserServices {
         ArrayList<User> res = new ArrayList<>();
         userlist.ifPresent(res::add);
         return res.get(0);
+    }
+
+    public void attack(long id) {
+        Optional<User> userlist = userRepository.findById(id);
+        ArrayList<User> res = new ArrayList<>();
+        userlist.ifPresent(res::add);
+        res.get(0).setCurrentEnemyHp(res.get(0).getCurrentEnemyHp()-1);
+        userRepository.saveAndFlush(res.get(0));
     }
 }
