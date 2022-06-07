@@ -41,6 +41,7 @@ create table Item
     damage      	int8 not null,
     rarity_level 	int8 not null,
     cost		int8 not null,
+    path_to_image varchar(255) not null,
     is_bought_by_donat	int8 not null,
     primary key (id)
 );

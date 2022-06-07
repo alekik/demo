@@ -18,7 +18,7 @@ public class User {
     @Getter
     @Setter
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Getter
@@ -74,6 +74,11 @@ public class User {
     @Setter
     @ManyToMany
     private Set<Item> item;
+
+    @Getter
+    @Setter
+    @Column(name = "damage")
+    private Integer damage;
 
 //    @Getter
 //    @Setter

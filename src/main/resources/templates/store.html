@@ -1,58 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Projects - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
 </head>
 
 <body>
+
     <section class="py-5 mt-5">
         <div class="container py-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2 class="fw-bold">Магазин</h2>
-                    <p class="text-muted w-lg-50">Лучший магазин во всём собачкограде, гав!</p>
+                    <h2 class="fw-bold">Магазин <form th:action="'/game/' + ${id} + '/' + ${pass}" method="get"> <button class="btn btn-primary btn-lg" type="submit">Вернуться</button></form></h2>
+                    <p class="text-muted w-lg-50">Лучший магазин во всём Самарском университете</p>
                 </div>
             </div>
+            <div th:each = "el : ${items}">
             <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;">
-                <div class="col mb-4">
-                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="assets/img/products/1.jpg" style="height: 250px;"></a>
+                <div class="col mb-4">-->
+                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" th:src="'../../img/products/' +${el.path_to_image}" style="height: 250px;"></a>
                         <div class="py-4"><span class="badge bg-primary mb-2" style="background: var(--bs-blue);border-color: var(--bs-blue);--bs-body-bg: var(--bs-blue);filter: brightness(101%);">ЭПИЧЕСКИЙ</span>
-                            <h4 class="fw-bold">Синий ананас</h4><small class="form-text">47 догерублей</small>
+                            <h4 class="fw-bold"th:text="${el.name}"></h4><small class="form-text"th:text="${el.cost}"></small>
                         </div>
                     </div>
                 </div>
-                <div class="col mb-4">
-                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="assets/img/products/2.jpg" style="height: 250px;"></a>
-                        <div class="py-4"><span class="badge bg-primary mb-2">РЕДКИЙ</span>
-                            <h4 class="fw-bold">БОлЬшИе вишни</h4><small class="form-text">67 догерублей</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="assets/img/products/3.jpg" style="height: 250px;"></a>
-                        <div class="py-4"><span class="badge bg-primary mb-2">Обычный</span><span class="badge bg-primary mb-2">Донат</span><span class="badge bg-primary mb-2"></span>
-                            <h4 class="fw-bold">Просто кактус</h4><small class="form-text">23 догедолларов</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="assets/img/products/1.jpg" style="height: 250px;"></a>
-                        <div class="py-4"><span class="badge bg-primary mb-2" style="background: var(--bs-blue);">ЛЕГЕНДАРНЫЙ</span>
-                            <h4 class="fw-bold">Голубой ананас</h4><small class="form-text">46 догерублей</small>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="col mb-4">-->
+<!--                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="../../img/products/1.jpg" style="height: 250px;"></a>-->
+<!--                        <div class="py-4"><span class="badge bg-primary mb-2" style="background: var(&#45;&#45;bs-blue);border-color: var(&#45;&#45;bs-blue);&#45;&#45;bs-body-bg: var(&#45;&#45;bs-blue);filter: brightness(101%);">ЭПИЧЕСКИЙ</span>-->
+<!--                            <h4 class="fw-bold">Синий ананас</h4><small class="form-text">47 догерублей</small>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col mb-4">-->
+<!--                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="img/products/2.jpg" style="height: 250px;"></a>-->
+<!--                        <div class="py-4"><span class="badge bg-primary mb-2">РЕДКИЙ</span>-->
+<!--                            <h4 class="fw-bold">БОлЬшИе вишни</h4><small class="form-text">67 догерублей</small>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col mb-4">-->
+<!--                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="assets/img/products/3.jpg" style="height: 250px;"></a>-->
+<!--                        <div class="py-4"><span class="badge bg-primary mb-2">Обычный</span><span class="badge bg-primary mb-2">Донат</span><span class="badge bg-primary mb-2"></span>-->
+<!--                            <h4 class="fw-bold">Просто кактус</h4><small class="form-text">23 догедолларов</small>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col mb-4">-->
+<!--                    <div><a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="assets/img/products/1.jpg" style="height: 250px;"></a>-->
+<!--                        <div class="py-4"><span class="badge bg-primary mb-2" style="background: var(&#45;&#45;bs-blue);">ЛЕГЕНДАРНЫЙ</span>-->
+<!--                            <h4 class="fw-bold">Голубой ананас</h4><small class="form-text">46 догерублей</small>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="col"></div>
                 <div class="col">
                     <section class="justify-content-between py-4 py-xl-5">
-                        <div class="container d-lg-flex align-content-center justify-content-lg-end"><button class="btn btn-primary btn-lg" type="button">Купить</button></div>
+                        <div class="container d-lg-flex align-content-center justify-content-lg-end"><form th:action="'/buyitem/' +  ${el.id} + '/' + ${id} + '/' + ${pass}" method="post"><button class="btn btn-primary btn-lg" type="submit">Купить</button></form></div>
                     </section>
                 </div>
+            </div>
             </div>
         </div>
     </section>

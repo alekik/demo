@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Item {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Getter
     @Setter
     private Long id;
@@ -37,6 +37,11 @@ public class Item {
     @Setter
     @Column(name = "cost", nullable = false)
     private Integer cost;
+
+    @Getter
+    @Setter
+    @Column(name = "path_to_image", nullable = false)
+    private String path_to_image;
 
     @Getter
     @Setter
