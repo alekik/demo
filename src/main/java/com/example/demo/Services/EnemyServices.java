@@ -4,7 +4,6 @@ import com.example.demo.DemoApplication;
 import com.example.demo.persist.models.Enemy;
 import com.example.demo.persist.models.User;
 import com.example.demo.persist.repos.EnemyRepository;
-import com.example.demo.persist.repos.HeroRepository;
 import com.example.demo.persist.repos.ItemRepository;
 import com.example.demo.persist.repos.UserRepository;
 
@@ -26,18 +25,17 @@ public class EnemyServices {
     @Autowired
     private ItemRepository itemRepository;
 
-    @Autowired
-    private HeroRepository heroRepository;
 
     @Autowired
     private EnemyRepository enemyRepository;
 
-    public void addEnemy(String name, int hp){
+    public void addEnemy(String name,String imgenemy, int hp){
         Enemy enemy = new Enemy();
+        enemy.setId(enemyRepository.count()+1L);
         enemy.setHp(hp);
         enemy.setIsBoss(0);
         enemy.setName(name);
-        enemy.setPathToImage("123");
+        enemy.setPathToImage(imgenemy);
         enemyRepository.save(enemy);
     }
 

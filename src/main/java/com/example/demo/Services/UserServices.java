@@ -4,10 +4,10 @@ import com.example.demo.persist.models.Enemy;
 import com.example.demo.persist.models.Item;
 import com.example.demo.persist.models.User;
 import com.example.demo.persist.repos.EnemyRepository;
-import com.example.demo.persist.repos.HeroRepository;
 import com.example.demo.persist.repos.ItemRepository;
 import com.example.demo.persist.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -21,14 +21,13 @@ public class UserServices {
     private ItemRepository itemRepository;
 
     @Autowired
-    private HeroRepository heroRepository;
-    @Autowired
     private UserRepository userRepository;
 
     public long adduser(String login, String password){
         User user = new User();
         user.setUsername(login);
         user.setPassword(password);
+        user.setId(userRepository.count()+1L);
         user.setUserLevel(1);
         Optional<Enemy> enemylist = enemyRepository.findById(1L);
         ArrayList<Enemy> res = new ArrayList<>();
@@ -174,5 +173,14 @@ public class UserServices {
             updateItem();
         }
 
+    }
+
+    public List<User> getrating() {
+        List<User> lst = userRepository.findAll(Sort.by("userLevel"));
+        return lst;
+    }
+
+    public String getcount() {
+        return String.valueOf(userRepository.count()+1);
     }
 }

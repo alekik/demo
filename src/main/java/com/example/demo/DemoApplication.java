@@ -3,7 +3,6 @@ package com.example.demo;
 import com.example.demo.persist.models.Enemy;
 import com.example.demo.persist.models.User;
 import com.example.demo.persist.repos.EnemyRepository;
-import com.example.demo.persist.repos.HeroRepository;
 import com.example.demo.persist.repos.ItemRepository;
 import com.example.demo.persist.repos.UserRepository;
 import org.springframework.data.jpa.repository.JpaRepository;

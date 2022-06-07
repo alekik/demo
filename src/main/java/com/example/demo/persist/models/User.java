@@ -1,6 +1,8 @@
 package com.example.demo.persist.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +14,15 @@ import java.util.Set;
  */
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "usr")
 public class User {
 
     @Getter
     @Setter
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Getter
@@ -64,11 +68,6 @@ public class User {
     @Setter
     @Column(name = "user_level")
     private Integer userLevel;
-
-    @Getter
-    @Setter
-    @ManyToMany
-    private Set<Hero> hero;
 
     @Getter
     @Setter

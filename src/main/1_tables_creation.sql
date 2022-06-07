@@ -23,17 +23,6 @@ create table Enemy
     is_boss	int8 not null,
     primary key (id)
 );
-
-create table Hero
-(
-    id          int8 not null,
-    damage      int8 not null,
-    hero_level       int8 not null,
-    name	varchar(4096) not null,
-    cost	int8 not null,
-    hero_order	int8 not null,
-    primary key (id)
-);
 create table Item
 (
     id          	int8 not null,
@@ -45,11 +34,6 @@ create table Item
     is_bought_by_donat	int8 not null,
     primary key (id)
 );
-create table usr_hero
-(
-    hero_id 	int8 not null,
-    user_id   	int8 not null
-);
 create table usr_item
 (
     item_id 	int8 not null,
@@ -57,8 +41,6 @@ create table usr_item
 );
 
 ALTER TABLE usr ADD CONSTRAINT fk_enemy_id foreign key (current_enemy_id) references Enemy (id);
-ALTER TABLE usr_hero ADD CONSTRAINT fk_hero_id foreign key (hero_id) references Hero (id);
-ALTER TABLE usr_hero ADD CONSTRAINT fk_user_id foreign key (user_id) references usr (id);
 
 ALTER TABLE usr_item ADD CONSTRAINT fk_item_id foreign key (item_id) references Item (id);
 ALTER TABLE usr_item ADD CONSTRAINT fk_item_user_id foreign key (user_id) references usr (id);

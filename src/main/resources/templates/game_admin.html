@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" charset="utf-8">
   <meta name="viewport width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>game</title>
+  <title>Игра</title>
   <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 
@@ -18,24 +18,25 @@
       <ul class="navbar-nav ms-auto">
         <!--                    <li class="nav-item"><a class="nav-link active" href="#">Магазин</a></li>-->
         <!--                    <li class="nav-item"><a class="nav-link" href="#">Статистика</a></li>-->
-        <li class="nav-item"><a class="nav-link" href="/rating">pейтинг</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="'/rating/' + ${id} + '/' + ${pass}">Рейтинг</a></li>
         <a class="btn btn-primary ms-md-2" role="button" th:href="'/store/' + ${id} + '/' + ${pass}">Магазин</a>
-        <a class="btn btn-primary ms-md-2" role="button" th:href="'/admin/' + ${id} + '/' + ${pass}">Редактировать</a>
+        <a class="btn btn-primary ms-md-2" role="button" th:href="'/admin/1.jpg/1.jpg/' + ${id} + '/' + ${pass}">Редактировать</a>
         <a class="btn btn-primary ms-md-2" role="button" href="/login">Перезайти</a>
         <p th:text = "${name}" class="mt-3 "name="login"></p></ul>
     </div>
   </div>
 </nav>
 <section class="py-4 py-xl-5">
-  <p class="text-center">Игровой счет <p class="text-center" th:text = "${score}"></p></p>
-  <h1 class="text-center" th:text = "${level}"> ТУТ ИГРОВОЙ УРОВЕНЬ</h1>
-  <h1 class="text-center" th:text = "${enemyname}"> ТУТ ИМЯ ВРАГА</h1>
-  <h1 class="text-center" th:text = "${enemyhp}"> ТУТ ХП ВРАГА </h1>
+  <h1 class="text-center" th:text = "'Игровой счет ' + ${score}"></h1>
+  <h1 class="text-center" th:text = "'Игровой уровень ' + ${level}"></h1>
+  <h1 class="text-center" th:text = "'Имя противника ' + ${enemyname}"></h1>
+  <h1 class="text-center" th:text = "'Здоровье противника ' + ${enemyhp}"></h1>
 </section>
 <div class="text-white bg-primary bg-gradient border rounded border-0 p-4 py-5" style="height: 500px;">
+<!--  <img style="width: 128px;height: 128px;margin: 0px;" th:src="'../../../img/' + ${pathToImage}">-->
   <div class="row h-100">
     <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
-      <div><form action="#" th:action="@{'/game_admin/' + ${id} + '/' + ${pass}}" th:object="${name}" method="post"><button class="btn btn-primary btn-dark btn-lg text-uppercase fs-5 border rounded-circle border-0 shadow-lg py-2 px-4" style="height: 200px;width: 200px;">ЖМИ НА МЕНЯ</button></form></div>
+      <div><form action="#" th:action="@{'/game_admin/' + ${id} + '/' + ${pass}}" th:object="${name}" method="post"><button class="btn btn-primary btn-dark btn-lg text-uppercase fs-5 border rounded-circle border-0 shadow-lg py-2 px-4" style="height: 200px;width: 200px;"><img style="width: 120px;height: 120px;margin: 0px;" th:src="'../../../img/' + ${pathToImage}">ЖМИ НА МЕНЯ</button></form></div>
     </div>
   </div>
 </div>

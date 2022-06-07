@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Админка</title>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
 </head>
 
@@ -21,7 +21,7 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col">
-                    <form class="p-3 p-xl-4" th:action="@{'/addenemy/' + ${id} + '/' + ${pass}}" method="post">
+                    <form class="p-3 p-xl-4" th:action="@{'/addenemy/' + ${imgenemy} + '/' + ${id} + '/' + ${pass}}" method="post">
                         <div class="mb-3"><input class="form-control" type="text" id="name-1" name="name" placeholder="Имя" style="height: 77.7812px;"></div>
                         <div class="mb-3"><input class="form-control" type="number" id="hp-1" name="hp" placeholder="Здоровье" style="height: 77.7812px;"></div>
                         <div class="mb-3"></div>
@@ -31,8 +31,8 @@
                     </form>
                 </div>
                 <div class="col-md-6 col-xl-4">
-                    <div></div><img style="width: 128px;height: 128px;margin: 0px;" src="../../img/dog.jpg">
-                    <div class="card"></div><input type="file" style="margin: 0px;margin-top: 8px;">
+                    <div></div><form th:action = "'/admin/'+${imgenemy}+'/'+${imgitem}+'/'+${id}+'/'+${pass}" method="post">
+                    <a th:href = "'/admin/enemy/'+${imgenemy}+'/'+${imgitem}+'/'+${id}+'/'+${pass}" method="post"><img style="width: 128px;height: 128px;margin: 0px;" th:src="'../../../../img/' + ${imgenemy}"></a></form>
                 </div>
             </div>
         </div>
@@ -46,15 +46,16 @@
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col">
-                <form class="p-3 p-xl-4" th:action="@{'/additem/' + ${id} + '/' + ${pass}}" method="post">
+                <form class="p-3 p-xl-4" th:action="@{'/additem/' + ${imgitem} + '/' + ${id} + '/' + ${pass}}" method="post">
                     <div class="mb-3"><input class="form-control" type="text" id="name-2" name="name" placeholder="Название" style="height: 51.7812px;"></div><input class="form-control" type="number" name ="damage"placeholder="Урон">
                     <div class="mb-3"></div><input class="form-control" type="number" name = "cost" placeholder="Цена">
                     <div><button class="btn btn-primary shadow d-block w-100" type="submit">Добавить</button></div>
                 </form>
             </div>
             <div class="col-md-6 col-xl-4">
-                <div></div><img style="width: 128px;height: 128px;margin: 0px;" src="../../img/кость.jpg">
-                <div class="card"></div><input type="file" style="margin-top: 8px;">
+                <div></div><form th:action = "'/admin/'+${imgenemy}+'/'+${imgitem}+'/'+${id}+'/'+${pass}" method="post">
+                <a th:href = "'/admin/item/'+${imgenemy}+'/'+${imgitem}+'/'+${id}+'/'+${pass}" method="post"><img style="width: 128px;height: 128px;margin: 0px;" th:src="'../../../../img/' + ${imgitem}"></a>
+                </form>
             </div>
         </div>
     </div>

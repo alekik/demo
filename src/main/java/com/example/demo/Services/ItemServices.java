@@ -40,13 +40,14 @@ public class ItemServices {
         return res;
     }
 
-    public void addItem(String name,int damage,int cost){
+    public void addItem(String name,String imgitem,int damage,int cost){
         Item item = new Item();
+        item.setId(itemRepository.count()+1L);
         item.setName(name);
         item.setCost(cost);
         item.setDamage(damage);
         item.setRarityLevel(1);
-        item.setPath_to_image("---");
+        item.setPath_to_image(imgitem);
         item.setIsBoughtByDonat(0);
         itemRepository.save(item);
     }

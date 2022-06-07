@@ -1,6 +1,8 @@
 package com.example.demo.persist.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,13 +11,15 @@ import javax.persistence.*;
  * @author Arkadiy Sotnikov (04.04.2022 3:06)
  */
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Item")
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Getter
     @Setter
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Getter

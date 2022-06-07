@@ -1,51 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta http-equiv="Content-Type" charset="utf-8">
     <meta name="viewport width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Рейтинг</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 
 <body class="text-center" wfd-invisible="true">
-<nav th:insert="~{header :: copy}"></nav>
 <section class="position-relative py-4 py-xl-5">
     <div class="container-fluid">
         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
             <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-9 col-lg-9 col-xl-7">
-
+                        <form th:action="'/game/' + ${id} + '/' + ${pass}" method="get"> <button class="btn btn-primary btn-lg" type="submit">Вернуться</button></form>
                         <h1>Рейтинговая таблица</h1>
                         <table class="table">
                             <thead>
                             <tr>
                                 <th scope="col">Место в рейтинге</th>
                                 <th scope="col">Имя пользователя</th>
-                                <th scope="col">Время игры</th>
+                                <th scope="col">Уровень игрока</th>
                                 <th scope="col">Очки</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>87</td>
-                                <td>888</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>91</td>
-                                <td>880</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>92</td>
-                                <td>877</td>
-                            </tr>
+                            <div th:each = "el : ${users}">
+                                <tr>
+                                    <th scope="row" th:text="${el.id}"></th>
+                                    <td th:text="${el.username}"></td>
+                                    <td th:text="${el.userLevel}"></td>
+                                    <td th:text="${el.score}"></td>
+                                </tr>
+                            </div>
                             </tbody>
                         </table>
                     </div>
